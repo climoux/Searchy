@@ -46,7 +46,7 @@ The application will be available at `http://localhost:3000`.
 
 The backend API is located in the `/src/app/api` folder. Here are some key endpoints:
 
-- `GET /api/search?q=your-query` - Fetches search results based on the query.
+- `GET /api/search?q=something` - Fetches search results based on the query.
 - `GET /api/stats` - Returns statistics about the crawler and indexed pages.
 
 ## Contribution
