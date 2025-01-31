@@ -1,0 +1,53 @@
+import { ResolvingMetadata, Metadata } from "next";
+import axios from "axios";
+// Components
+import SearchResult from "@/component/SearchResult";
+import Header from "@/component/Header";
+
+type Props = {
+    searchParams: Promise<{ q: string }>
+}
+
+export async function generateMetadata(
+    { searchParams }: Props,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+    const searchQuery = (await searchParams).q
+         
+    return {
+        title: `${searchQuery} - Searchy`,
+        openGraph: {
+            title: `${searchQuery} - Searchy`
+        },
+        twitter: {
+            title: `${searchQuery} - Searchy`
+        }
+    }
+}
+
+export default async function SearchPage({ searchParams }: Props) {
+    const search = (await searchParams).q;
+    // Fetching data
+    const data = await axios.get('http://localhost:3000/api/search', { params: { q: search } });
+    const results = data.data;
+
+    return (<>
+        <main className="root-search">
+            <Header search={search} />
+            <section className="resultsSection-root">
+                {results.map(result => {
+                    return (
+                        <SearchResult
+                            id={result.id}
+                            name={result.name}
+                            description={result.description}
+                            url={result.url}
+                            favicon={result.icons && result.icons[0] ? result.icons[0].link : undefined}
+                            site_name={result.openGraph?.site_name ? result.openGraph.site_name: ''}
+                        />
+                    );
+                })}
+            </section>
+        </main>
+    </>);
+}

@@ -1,11 +1,16 @@
 'use client';
 
+import { useState } from "react";
 import Image from "next/image";
-import { redirect } from 'next/navigation';
-// Components
-import Input from "@/component/SearchInput";
+import { useRouter } from 'next/navigation'
+// Component
+import GithubButton from "@/component/GithubButton";
 
 export default function HomePage() {
+    const router = useRouter();
+
+    const [searchValue, setSearchValue] = useState<string>('');
+
     return (<>
         <main className="root-home">
             <section className="searchyLogoSection-root">
@@ -31,8 +36,31 @@ export default function HomePage() {
                         tabIndex={1}
                         maxLength={255}
                         required={true}
+                        onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                            const searchElement = document.getElementById('search');
+                            if (searchElement) {
+                                if(e.currentTarget.value.length > 255){
+                                    searchElement.style.borderColor = "#FF8282";
+                                    return;
+                                }
+
+                                searchElement.style.borderColor = "#202020";
+                                setSearchValue(e.currentTarget.value.trim());
+                            }
+                        }}
+                        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                            if(e.key === "Enter"){
+                                document.getElementById('searchButton')?.click();
+                            }
+                        }}
                     />
-                    <div role="button" className="button_inputRoot" tabIndex={2}>
+                    <div role="button" id="searchButton" className="button_inputRoot" tabIndex={2} onClick={() => {
+                        if(searchValue === ''){
+
+                        }else{
+                            router.push(`/search?q=${searchValue}`);
+                        }
+                    }}>
                         <span>Search it</span>
                     </div>
                 </div>
@@ -40,18 +68,7 @@ export default function HomePage() {
             </section>
             <footer className="githubInfo-root">
                 <p className="openSourceInfo-githubRoot">This is open source, feel free to get the code!</p>
-                <button className="button-githubRoot" onClick={() => {
-                    redirect('https://github.com/Climoux/Searchy')
-                }}>
-                    <Image
-                        src="/github.svg"
-                        width={30}
-                        height={30}
-                        alt="Github logo"
-                        title="Github"
-                    />
-                    <span>Get the code on GitHub</span>
-                </button>
+                <GithubButton />
             </footer>
         </main>
     </>);

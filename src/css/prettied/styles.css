@@ -1,5 +1,6 @@
 @import url('https://api.fontshare.com/v2/css?f[]=poppins@400,500,600,700&display=swap');
 @import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css');
 
 :root {
     --title-font-weight: 500;
@@ -7,6 +8,7 @@
     --main-color: #FF8282;
     --base-color: #101010;
     --highlight-element-color: #202020;
+    --link-color: #408dd9;
 }
 
 * {
@@ -56,12 +58,12 @@ body {
 }
 
 .text_LogoSection > h1 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: var(--title-font-weight);
     margin: 0;
 }
 .text_LogoSection > h2 {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 400;
     margin: 0;
 }
@@ -80,7 +82,7 @@ body {
 
 .searchyInput-root > i {
     display: flex;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: #9A9A9A;
     margin: 0 15px;
 }
@@ -88,7 +90,7 @@ body {
 .searchyInput-root > input {
     width: 100%;
     background: transparent;
-    border: none;
+    border: 2px solid var(--highlight-element-color);
     outline: none;
 }
 
@@ -119,7 +121,7 @@ body {
     margin: 0;
     margin-top: 50px;
     font-weight: var(--title-font-weight);
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 /* Footer info */
@@ -133,7 +135,7 @@ body {
 }
 
 .openSourceInfo-githubRoot {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: var(--title-font-weight);
     margin: 0 0 20px 0;
 }
@@ -163,3 +165,150 @@ body {
     background-color: #CFCFCF;
     box-shadow: 0 0 75px 0 rgba(255, 255, 255, .35), 5px 5px 0px #9A9A9A, 10px 10px 0px #707070;
 }
+
+/* Search page */
+/* Header */
+.searchyHeader-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #303030;
+}
+
+.searchyHeader-search > #no-navigation,
+.searchyHeader-search > #navigation { display: flex; }
+
+/* Top part of header */
+/* -- Search input for search page */
+.searchyHeader-search .searchyInput-root { margin-left: 40px; }
+
+.button_inputSearch {
+    margin-right: 15px;
+    cursor: pointer;
+}
+.button_inputSearch > i {
+    display: flex;
+    color: #9A9A9A;
+    transition: .2s;
+}
+
+.button_inputSearch:hover > i { color: #F0F0F0; }
+
+/* -- Right part */
+.rightSection-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 30px;
+}
+
+.rightSection-header > p {
+    font-size: 1rem;
+    font-weight: var(--title-font-weight);
+    margin-right: 30px;
+}
+
+/* Navigation part */
+.searchyHeader-search > #navigation {
+    width: 600px;
+    gap: 10px;
+    margin: 20px 0 0 90px;
+}
+
+.nav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 30px;
+    height: 30px;
+    padding: 0 15px;
+    background-color: #303030;
+    border-radius: 10px;
+    font-size: .875rem;
+    font-weight: var(--title-font-weight);
+    text-decoration-line: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.nav-button > span {
+    color: #9A9A9A;
+    transition: .2s;
+}
+.nav-button.active > span { color: #fff; }
+
+.nav-button:hover > span { color: #fff; }
+
+.searchyHeader-search > #navigation > #settings {
+    margin-left: auto;
+    font-size: 25px;
+    color: #9A9A9A;
+    cursor: pointer;
+    transition: .2s;
+}
+.searchyHeader-search > #navigation > #settings:hover { color: #fff; }
+
+/* Results */
+.resultsSection-root {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0 0 120px;
+    width: calc(100% - 150px);
+    height: 100%;
+    gap: 30px 0;
+}
+
+.resultsSection-root > a {
+    text-decoration-line: none;
+    width: fit-content;
+}
+
+.result-searchRoot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 600px;
+    cursor: pointer;
+}
+
+.top-resultInfos {
+    display: flex;
+    align-items: center;
+}
+
+.top-resultInfos > img {
+    border-radius: 50% !important;
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #303030;
+}
+.top-resultInfos > #name-url {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.top-resultInfos > #name-url > #name { font-weight: var(--title-font-weight); }
+.top-resultInfos > #name-url > #url {
+    color: #CFCFCF;
+    font-size: .875rem;
+    transition: .2s;
+}
+
+.main-resultInfos > #page-name {
+    font-size: 1.25rem;
+    font-weight: var(--title-font-weight);
+    margin: 10px 0 5px 0;
+    transition: .2s;
+}
+.main-resultInfos > #page-description {
+    margin: 0;
+    color: #CFCFCF;
+}
+
+.top-resultInfos > #name-url > #url:hover { text-decoration-line: underline; }
+.main-resultInfos > #page-name:hover { color: var(--link-color); }
