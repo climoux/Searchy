@@ -22,7 +22,7 @@ To run Searchy locally, follow these steps:
 
 3. Install dependencies:
 
-```
+```sh
 npm install
 # or
 pnpm install
@@ -32,7 +32,7 @@ yarn install
 
 4. Launch the application
 
-```
+```sh
 npm run dev
 # or
 pnpm run dev
