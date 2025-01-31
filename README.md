@@ -14,11 +14,11 @@ To run Searchy locally, follow these steps:
 
 1. Clone the repository:
 
-`git clone https://github.com/Climoux/searchy.git`
+```git clone https://github.com/Climoux/searchy.git```
 
 2. Navigate to the project directory:
 
-`cd searchy`
+```cd searchy```
 
 3. Install dependencies:
 
