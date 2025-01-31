@@ -24,9 +24,9 @@ To run Searchy locally, follow these steps:
 
 ```
 npm install
-or
+# or
 pnpm install
-or
+# or
 yarn install
 ```
 
@@ -34,9 +34,9 @@ yarn install
 
 ```
 npm run dev
-or
+# or
 pnpm run dev
-or
+# or
 yarn run dev
 ```
 
