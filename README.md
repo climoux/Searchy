@@ -1,20 +1,58 @@
 Searchy is a simple web browser. No ads or trackers, just results. It is enhanced by my own web crawler.
 This project is made with [Next.js](https://nextjs.org).
 
-## Getting Started
+## Features
 
-First, run the development server:
+- Private browsing experience with no ads or trackers
+- Custom web crawler to enhance search results
+- Self-hosted API for handling search queries
+- Built with Next.js for performance and scalability
 
-```bash
-npm run dev
+## Installation
+
+To run Searchy locally, follow these steps:
+
+1. Clone the repository:
+
+```git clone https://github.com/Climoux/searchy.git```
+
+2. Navigate to the project directory:
+
+```cd searchy```
+
+3. Install dependencies:
+
+```sh
+npm install
 # or
-yarn dev
+pnpm install
 # or
-pnpm dev
-# or
-bun dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Launch the application
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run dev
+# or
+pnpm run dev
+# or
+yarn run dev
+```
+
+The application will be available at `http://localhost:3000`.
+
+## API Endpoints
+
+The backend API is located in the `/src/app/api` folder. Here are some key endpoints:
+
+- `GET /api/search?q=something` - Fetches search results based on the query.
+- `GET /api/stats` - Returns statistics about the crawler and indexed pages.
+
+## Contribution
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## License
+
+This project is licensed under the CC0-1.0 license.
