@@ -8,6 +8,34 @@ type Props = {
     searchParams: Promise<{ q: string }>
 }
 
+type ResultsProps = {
+    id: number;
+    name: string;
+    description: string;
+    url: string;
+    icons: {
+        link: string | undefined;
+        types: string | null;
+        sizes: string | null;
+    }[];
+    openGraph: {
+        name: string;
+        description: string;
+        image: string;
+        url: string;
+        type: string;
+        site_name: string;
+    };
+    canonical: string;
+    alternates: {
+        link: string | undefined;
+        locale: string;
+    }[];
+    text: [];
+    links: [];
+    responseTime: number;
+}
+
 export async function generateMetadata(
     { searchParams }: Props,
     parent: ResolvingMetadata
@@ -35,7 +63,7 @@ export default async function SearchPage({ searchParams }: Props) {
         <main className="root-search">
             <Header search={search} />
             <section className="resultsSection-root">
-                {results.map(result => {
+                {results.map((result: ResultsProps) => {
                     return (
                         <SearchResult
                             id={result.id}
