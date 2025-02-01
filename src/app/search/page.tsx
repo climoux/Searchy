@@ -55,26 +55,32 @@ export async function generateMetadata(
 export default async function SearchPage({ searchParams }: Props) {
     const search = (await searchParams).q;
     // Fetching data
-    const data = await axios.get('http://localhost:3000/api/search', { params: { q: search } });
-    const results = data.data;
+    const data = await axios.get('https://searchy.wevaw.com/search', { params: { q: search } });
+    const results = data.data.result;
 
     return (<>
         <main className="root-search">
             <Header search={search} />
             <section className="resultsSection-root">
-                {results.map((result: ResultsProps) => {
-                    return (
-                        <SearchResult
-                            key={result.id}
-                            id={result.id}
-                            name={result.name}
-                            description={result.description}
-                            url={result.url}
-                            favicon={result.icons && result.icons[0] ? result.icons[0].link : undefined}
-                            site_name={result.openGraph?.site_name ? result.openGraph.site_name: ''}
-                        />
-                    );
-                })}
+                {
+                    results !== null ? (
+                        results.map((result: ResultsProps) => {
+                            return (
+                                <SearchResult
+                                    key={result.id}
+                                    id={result.id}
+                                    name={result.name}
+                                    description={result.description}
+                                    url={result.url}
+                                    favicon={result.icons && result.icons[0] ? result.icons[0].link : undefined}
+                                    site_name={result.openGraph?.site_name ? result.openGraph.site_name: ''}
+                                />
+                            );
+                        })
+                    ): (<>
+                    
+                    </>)
+                }
             </section>
         </main>
     </>);

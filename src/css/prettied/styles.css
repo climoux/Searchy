@@ -290,6 +290,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-left: 15px;
+    width: 100%;
 }
 
 .top-resultInfos > #name-url > #name { font-weight: var(--title-font-weight); }
@@ -297,6 +298,9 @@ body {
     color: #CFCFCF;
     font-size: .875rem;
     transition: .2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .main-resultInfos > #page-name {

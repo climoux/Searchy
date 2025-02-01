@@ -55,9 +55,7 @@ export default function HomePage() {
                         }}
                     />
                     <div role="button" id="searchButton" className="button_inputRoot" tabIndex={2} onClick={() => {
-                        if(searchValue === ''){
-
-                        }else{
+                        if(searchValue !== ''){
                             router.push(`/search?q=${searchValue}`);
                         }
                     }}>

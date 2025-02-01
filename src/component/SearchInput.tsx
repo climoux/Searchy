@@ -1,8 +1,12 @@
 'use client';
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const SearchInput = ({ searchQuery }: { searchQuery: string })  => {
+    const router = useRouter();
+
+    const [searchValue, setSearchValue] = useState<string>('');
     const [hasSearchContent, setHasSearchContent] = useState<boolean>(searchQuery ? true: false);
 
     return (
@@ -16,6 +20,25 @@ const SearchInput = ({ searchQuery }: { searchQuery: string })  => {
                 maxLength={255}
                 required={true}
                 defaultValue={searchQuery ?? ''}
+                onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    const searchElement = document.getElementById('search');
+                    if (searchElement) {
+                        if(e.currentTarget.value.length > 255){
+                            searchElement.style.borderColor = "#FF8282";
+                            return;
+                        }
+
+                        searchElement.style.borderColor = "#202020";
+                        setSearchValue(e.currentTarget.value.trim());
+                    }
+                }}
+                onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                    if(e.key === "Enter"){
+                        if(searchValue !== ''){
+                            router.push(`/search?q=${searchValue}`);
+                        }
+                    }
+                }}
             />
             {
                 hasSearchContent && (
