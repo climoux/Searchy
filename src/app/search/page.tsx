@@ -1,4 +1,4 @@
-import { ResolvingMetadata, Metadata } from "next";
+import { Metadata } from "next";
 import axios from "axios";
 // Components
 import SearchResult from "@/component/SearchResult";
@@ -37,8 +37,7 @@ type ResultsProps = {
 }
 
 export async function generateMetadata(
-    { searchParams }: Props,
-    parent: ResolvingMetadata
+    { searchParams }: Props
   ): Promise<Metadata> {
     const searchQuery = (await searchParams).q
          
@@ -66,6 +65,7 @@ export default async function SearchPage({ searchParams }: Props) {
                 {results.map((result: ResultsProps) => {
                     return (
                         <SearchResult
+                            key={result.id}
                             id={result.id}
                             name={result.name}
                             description={result.description}
