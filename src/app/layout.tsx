@@ -1,4 +1,5 @@
 import { Metadata, Viewport } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 // import CSS
 import '../css/prettied/styles.css';
 
@@ -67,6 +68,7 @@ export default async function RootLayout({
             </head>
             <body>
                 {children}
+                <SpeedInsights />
             </body>
         </html>
     );

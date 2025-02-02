@@ -11,6 +11,7 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.1",
     "@tanstack/react-query": "^5.65.1",
+    "@vercel/speed-insights": "^1.1.0",
     "axios": "^1.7.9",
     "flesch-kincaid": "github:daveross/flesch-kincaid",
     "natural": "^8.0.1",
