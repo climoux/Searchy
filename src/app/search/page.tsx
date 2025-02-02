@@ -15,7 +15,7 @@ type ResultsProps = {
     url: string;
     icons: {
         link: string | undefined;
-        types: string | null;
+        type: string | null;
         sizes: string | null;
     }[];
     openGraph: {
@@ -65,6 +65,14 @@ export default async function SearchPage({ searchParams }: Props) {
                 {
                     results !== null ? (
                         results.map((result: ResultsProps) => {
+                            const favicon = result.icons
+                                ?.filter(icon => icon.sizes && icon.sizes.match(/^\d+x\d+$/))
+                                .sort((a, b) => {
+                                    const sizeA = a.sizes ? Math.max(...a.sizes.split('x').map(Number)): 0;
+                                    const sizeB = b.sizes ? Math.max(...b.sizes.split('x').map(Number)): 0;
+                                    return sizeB - sizeA;
+                                })[0]?.link || (result.icons && result.icons[0]?.link);
+
                             return (
                                 <SearchResult
                                     key={result.id}
@@ -72,7 +80,7 @@ export default async function SearchPage({ searchParams }: Props) {
                                     name={result.name}
                                     description={result.description}
                                     url={result.url}
-                                    favicon={result.icons && result.icons[0] ? result.icons[0].link : undefined}
+                                    favicon={favicon}
                                     site_name={result.openGraph?.site_name ? result.openGraph.site_name: ''}
                                 />
                             );

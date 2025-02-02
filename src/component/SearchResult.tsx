@@ -31,8 +31,8 @@ const SearchResult = ({ id, name, description, url, favicon, site_name }: Result
                         src={favicon}
                         width={50}
                         height={50}
-                        alt={name}
-                        title={site_name || new URL(url).hostname.replace("www.", "")}
+                        alt={site_name || new URL(url).hostname.replace("www.", "")}
+                        title={name}
                     />
                     <div id="name-url">
                         <span id="name">{site_name || new URL(url).hostname.replace("www.", "")}</span>
