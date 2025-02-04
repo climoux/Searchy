@@ -178,7 +178,8 @@ body {
 }
 
 .searchyHeader-search > #no-navigation,
-.searchyHeader-search > #navigation { display: flex; }
+.searchyHeader-search > #navigation,
+.searchyHeader-search > #navigation > #links { display: flex; }
 
 /* Top part of header */
 /* -- Search input for search page */
@@ -213,9 +214,20 @@ body {
 
 /* Navigation part */
 .searchyHeader-search > #navigation {
-    width: 600px;
-    gap: 10px;
+    align-items: center;
     margin: 20px 0 0 90px;
+    width: 600px;
+}
+
+.searchyHeader-search > #navigation > #links {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    gap: 10px;
+}
+
+.searchyHeader-search > #navigation > #links::-webkit-scrollbar {
+    display: none;
 }
 
 .nav-button {
@@ -243,8 +255,12 @@ body {
 .nav-button:hover > span { color: #fff; }
 
 .searchyHeader-search > #navigation > #settings {
+    display: flex;
+    height: fit-content;
     margin-left: auto;
     font-size: 25px;
+    padding-left: 20px;
+    box-shadow: -10px 0 10px 5px #101010;
     color: #9A9A9A;
     cursor: pointer;
     transition: .2s;
@@ -291,7 +307,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-left: 15px;
-    width: 100%;
+    width: calc(100% - 15px);
 }
 
 .top-resultInfos > #name-url > #name { font-weight: var(--title-font-weight); }
@@ -304,6 +320,11 @@ body {
     text-overflow: ellipsis;
 }
 
+.main-resultInfos {
+    display: flex;
+    flex-direction: column;
+}
+
 .main-resultInfos > #page-name {
     font-size: 1.25rem;
     font-weight: var(--title-font-weight);
@@ -313,7 +334,51 @@ body {
 .main-resultInfos > #page-description {
     margin: 0;
     color: #CFCFCF;
+    max-height: 150px;
+    overflow: hidden;
 }
 
 .top-resultInfos > #name-url > #url:hover { text-decoration-line: underline; }
 .main-resultInfos > #page-name:hover { color: var(--link-color); }
+
+/* Loading */
+._loading {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    background: #e0e0e0;
+    border-radius: 8px;
+    animation: skeleton-loading 1.5s infinite ease-in-out;
+}
+  
+._loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 100%);
+    animation: slide 1.5s infinite;
+}
+  
+@keyframes skeleton-loading {
+    0% {
+      background: #202020;
+    }
+    50% {
+      background: #303030;
+    }
+    100% {
+      background: #202020;
+    }
+}
+  
+@keyframes slide {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+}  

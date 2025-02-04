@@ -2,6 +2,7 @@ import { Metadata, Viewport } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 // import CSS
 import '../css/prettied/styles.css';
+import '../css/prettied/responsive.css';
 
 export const metadata: Metadata = {
     title: "Searchy - A simple web browser",
@@ -40,15 +41,11 @@ export const metadata: Metadata = {
         type: 'website',
         siteName: 'Searchy',
         images: '/large_icon.png',
-        //url: 'https://wevaw.com'
+        url: 'https://searchy-one.vercel.app'
     },
-    /*alternates: {
-        canonical: 'https://wevaw.com',
-        languages: {
-            'en-gb': 'https://wevaw.com/en-gb',
-            'fr': 'https://wevaw.com/fr',
-        }
-    },*/
+    alternates: {
+        canonical: 'https://searchy-one.vercel.app'
+    },
 };
  
 export const viewport: Viewport = {

@@ -1,0 +1,189 @@
+@media all and (max-width: 1400px) {
+    .rightSection-header { flex-direction: column; }
+    .rightSection-header > p { margin-top: 0; }
+
+    .searchyHeader-search > #navigation { margin-top: -10px; }
+}
+
+@media all and (max-width: 1150px) {
+    .rightSection-header > p { display: none; }
+
+    .searchyHeader-search > #navigation { margin-top: 20px; }
+
+    .rightSection-header .button-githubRoot {
+        width: 50px;
+        border-radius: 50%;
+    }
+    .rightSection-header .button-githubRoot > span { display: none; }
+}
+
+@media all and (max-width: 850px) {
+    .rightSection-header { display: none; }
+
+    .resultsSection-root > a { width: 100%; }
+    .result-searchRoot { width: 100%; }
+    .top-resultInfos > #name-url { width: calc(100% - 70px); }
+}
+
+@media all and (max-width: 750px) {
+    .searchyHeader-search > #navigation { width: calc(100% - 90px); }
+}
+
+@media all and (max-width: 700px) {
+    .searchSection-root {
+        width: calc(100% - 60px);
+        margin: 50px 30px 0;
+    }
+
+    .searchyInput-root { width: 100%; }
+
+    /* Search results */
+    .searchyHeader-search > #navigation { width: 100%;margin-left: 0; }
+
+    .searchyHeader-search .searchyInput-root { margin-left: 10px; }
+
+    .resultsSection-root {
+        margin: 30px 30px 0;
+        width: calc(100% - 60px);
+    }
+}
+
+@media all and (max-width: 600px){
+    .searchyLogoSection-root {
+        width: calc(100% - 60px);
+        margin: -100px 30px 0;
+    }
+}
+
+@media all and (max-width: 550px){
+    .searchyLogoSection-root > img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .text_LogoSection > h2 { font-size: 1.25rem; }
+}
+
+@media all and (max-width: 500px){
+    .searchyLogoSection-root > img {
+        width: 125px;
+        height: 125px;
+    }
+
+    .text_LogoSection > h1 { font-size: 2.5rem; }
+    .text_LogoSection > h2 { font-size: 1.125rem; }
+
+    /* Search results */
+    .searchyHeader-search { padding: 10px; }
+    .searchyHeader-search > #no-navigation img { width: 40px;height: 40px; }
+
+    .searchyHeader-search .searchyInput-root {
+        height: 40px;
+        border-radius: 15px;
+    }
+
+    .searchyHeader-search > #navigation { margin-top: 10px; }
+
+    .resultsSection-root { margin: 20px 20px 0; }
+    .top-resultInfos > #name-url { width: calc(100% - 50px); }
+}
+
+@media all and (max-width: 440px){
+    .searchyLogoSection-root > img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .text_LogoSection > h1 { font-size: 2.25rem; }
+    .text_LogoSection > h2 { font-size: 1rem; }
+
+    .searchyInput-root > input {
+        margin-right: 15px;
+    }
+
+    .searchyInput-root > .button_inputRoot {
+        display: none;
+    }
+
+    /* Search results */
+    .nav-button { min-width: auto; }
+    .nav-button #all { width: 30px; }
+}
+
+@media all and (max-width: 400px){
+    .text_LogoSection > h1 { font-size: 2rem; }
+    .text_LogoSection > h2 { font-size: 0.9rem; }
+
+    .searchyInput-root > input {
+        margin-right: 15px;
+    }
+
+    .searchyInput-root > .button_inputRoot {
+        display: none;
+    }
+
+    .searchyPhrase-root { font-size: 1rem; }
+
+    .openSourceInfo-githubRoot {
+        font-size: 0.9rem;
+        margin: 0 20px 20px;
+        text-align: center;
+    }
+}
+
+/* HEIGHT */
+@media all and (max-height: 650px){
+    .root-home {
+        height: auto;
+        margin-top: 30px;
+    }
+    .searchyLogoSection-root { margin-top: 0; }
+}
+
+@media all and (max-height: 600px){
+    .searchyPhrase-root { margin-top: 30px; }
+
+    .searchyLogoSection-root > img {
+        width: 112.5px;
+        height: 112.5px;
+    }
+}
+
+@media all and (max-height: 450px){
+    .githubInfo-root { bottom: 30px; }
+
+    .openSourceInfo-githubRoot { display: none; }
+    .button-githubRoot {
+        height: 40px;
+        border-radius: 15px;
+    }
+}
+
+@media all and (max-height: 400px){
+    .searchyPhrase-root { display: none; }
+
+    .searchyLogoSection-root > img {
+        width: 100px;
+        height: 100px;
+    }
+    .text_LogoSection > h1 { font-size: 2.75rem; }
+    .text_LogoSection > h2 { font-size: 1.25rem; }
+}
+
+@media all and (max-height: 350px){
+    .searchyInput-root { height: 40px; }
+    .searchyInput-root > .button_inputRoot { height: 25px; }
+}
+
+@media all and (max-height: 300px){
+    .button-githubRoot { display: none; }
+}
+
+@media all and (max-height: 300px){
+    .searchyLogoSection-root > img { display: none; }
+
+    .text_LogoSection > h1 { font-size: 2.5rem; }
+    .text_LogoSection > h2 { display: none; }
+
+    .searchSection-root { margin-top: 30px; }
+}

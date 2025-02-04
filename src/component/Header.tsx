@@ -26,16 +26,18 @@ const Header = ({ search }: { search: string }) => {
                     />
                 </Link>
                 <SearchInput searchQuery={search} />
-                <div className="rightSection-header">
+                <div className="rightSection-header" style={{ position: 'relative', right: 'auto', marginLeft: 'auto' }}>
                     <p>No ads. No trackers. Just results.</p>
                     <GithubButton />
                 </div>
             </section>
             <nav id="navigation">
-                <NavigationLinks href={'/search?q='+search} name="All" id="all" isActive={isActive({ path: "/search?q=" + search })} />
-                <NavigationLinks href={'/images?q='+search} name="Images" id="images" isActive={isActive({ path: "/images?q=" + search })} />
-                <NavigationLinks href={'/videos?q='+search} name="Videos" id="videos" isActive={isActive({ path: "/videos?q=" + search })} />
-                <NavigationLinks href={'/news?q='+search} name="News" id="news" isActive={isActive({ path: "/news?q=" + search })} />
+                <div id="links">
+                    <NavigationLinks href={'/search?q='+search} name="All" id="all" isActive={isActive({ path: "/search?q=" + search })} />
+                    <NavigationLinks href={'/images?q='+search} name="Images" id="images" isActive={isActive({ path: "/images?q=" + search })} />
+                    <NavigationLinks href={'/videos?q='+search} name="Videos" id="videos" isActive={isActive({ path: "/videos?q=" + search })} />
+                    <NavigationLinks href={'/news?q='+search} name="News" id="news" isActive={isActive({ path: "/news?q=" + search })} />
+                </div>
                 <i className="fi fi-rs-settings" id="settings"></i>
             </nav>
         </header>

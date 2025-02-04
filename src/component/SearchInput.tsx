@@ -7,7 +7,13 @@ const SearchInput = ({ searchQuery }: { searchQuery: string })  => {
     const router = useRouter();
 
     const [searchValue, setSearchValue] = useState<string>('');
-    const [hasSearchContent, setHasSearchContent] = useState<boolean>(searchQuery ? true: false);
+    const [hasSearchContent, setHasSearchContent] = useState<boolean>(searchQuery ? true : false);
+
+    const handleSearch = () => {
+        if (searchValue !== '') {
+            router.push(`/search?q=${searchValue}`);
+        }
+    };
 
     return (
         <div className="searchyInput-root" id="input_search" onClick={() => document.getElementById('search')?.focus()}>
@@ -23,7 +29,7 @@ const SearchInput = ({ searchQuery }: { searchQuery: string })  => {
                 onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
                     const searchElement = document.getElementById('search');
                     if (searchElement) {
-                        if(e.currentTarget.value.length > 255){
+                        if (e.currentTarget.value.length > 255) {
                             searchElement.style.borderColor = "#FF8282";
                             return;
                         }
@@ -33,10 +39,8 @@ const SearchInput = ({ searchQuery }: { searchQuery: string })  => {
                     }
                 }}
                 onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                    if(e.key === "Enter"){
-                        if(searchValue !== ''){
-                            router.push(`/search?q=${searchValue}`);
-                        }
+                    if (e.key === "Enter") {
+                        handleSearch();
                     }
                 }}
             />
