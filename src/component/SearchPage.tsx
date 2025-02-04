@@ -80,7 +80,7 @@ const SearchPage = ({ searchQuery }: { searchQuery: string }) => {
                         if(response.status !== 200){
                             favicon = '/default.png';
                         }
-                    } catch (error) {
+                    } catch {
                         favicon = '/default.png';
                     }
 

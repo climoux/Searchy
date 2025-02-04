@@ -37,7 +37,7 @@ const cleanUrl = (inputUrl: string) => {
         });
 
         return modified ? urlObj.toString() : inputUrl;
-    } catch (error) {
+    } catch {
         console.error("Invalid URL:", inputUrl);
         return inputUrl;
     }
