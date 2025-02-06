@@ -272,7 +272,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 30px 0 0 120px;
-    width: calc(100% - 150px);
+    min-width: 600px;
     height: 100%;
     gap: 30px 0;
 }
@@ -340,6 +340,122 @@ body {
 
 .top-resultInfos > #name-url > #url:hover { text-decoration-line: underline; }
 .main-resultInfos > #page-name:hover { color: var(--link-color); }
+
+/* Context */
+.contextSection-root {
+    display: flex;
+    margin: 20px 30px 0;
+}
+
+.context-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 460px;
+    min-width: 360px;
+    height: fit-content;
+    padding: 20px;
+    background-color: #202020;
+    border-radius: 25px;
+}
+
+.context-container > #head {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+.context-container > #head > img {
+    min-width: 50px;
+    max-width: 100px;
+    height: 40px;
+    padding: 5px 15px;
+    margin-left: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    background-color: #303030;
+}
+
+.context-container .head-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.head-info > p {
+    margin: 0;
+    font-weight: var(--title-font-weight);
+    font-size: 1.125rem;
+}
+
+.context-container > #abstract {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 30px);
+    max-height: 205px;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #303030;
+    text-decoration-line: none;
+    cursor: pointer;
+    transition: .2s;
+}
+.context-container > #abstract:hover { background-color: #404040; }
+
+.context-container > #abstract > p {
+    margin: 0;
+    font-size: 0.875rem;
+    overflow: hidden;
+
+}
+.context-container > #abstract > span {
+    margin-top: 5px;
+    color: var(--link-color);
+    font-weight: var(--title-font-weight);
+    font-size: 0.875rem;
+}
+
+.context-container > #advanced:has(*), .context-container > #profiles:has(*) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px 0 0;
+    border-top: 1px solid #404040;
+}
+
+#advanced > div:not(:first-child) > p {
+    margin: 0;
+    margin-top: 5px;
+    font-size: 14px;
+}
+#advanced > div:first-child > p { margin: 0; }
+
+#advanced > div #strong {
+    font-size: 14px;
+    font-weight: var(--title-font-weight);
+}
+
+.context-container > #profiles {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.context-container > #profiles img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: .2s;
+}
+
+.context-container > #profiles > a:not(:first-child) { margin-left: 10px; }
+.context-container > #profiles > a:hover img { filter: opacity(.5); }
 
 /* Loading */
 ._loading {

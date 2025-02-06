@@ -6,6 +6,7 @@ import axios from "axios";
 import SearchResult from "@/component/SearchResult";
 import Header from "@/component/Header";
 import LoadingResult from "./LoadingResult";
+import SearchContext from "./SearchContext";
 
 type ResultsProps = {
     id: number;
@@ -35,8 +36,38 @@ type ResultsProps = {
     responseTime: number;
 };
 
+type ContextProps = {
+    Abstract: string;
+    AbstractSource: string;
+    AbstractText: string;
+    AbstractURL: string;
+    Answer: string;
+    AnswerType: string;
+    Definition: string;
+    DefinitionSource: string;
+    DefinitionURL: string;
+    Entity: string;
+    Heading: string;
+    Image: string;
+    ImageHeight: number;
+    ImageIsLogo: number;
+    ImageWidth: number;
+    Infobox: {
+        content: [],
+        meta: [],
+    };
+    OfficialDomain: string | undefined;
+    OfficialWebsite: string | undefined;
+    Redirect: string;
+    RelatedTopics: [];
+    Results: [];
+    Type: string;
+    meta: [];
+}
+
 const SearchPage = ({ searchQuery }: { searchQuery: string }) => {
     const [results, setResults] = useState<ResultsProps[] | null>(null);
+    const [context, setContext] = useState<ContextProps | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
@@ -45,10 +76,14 @@ const SearchPage = ({ searchQuery }: { searchQuery: string }) => {
 
             try {
                 const { data } = await axios.get('https://searchy.wevaw.com/search', { params: { q: searchQuery } });
+                const contextData = await axios.get('https://api.duckduckgo.com/', { params: { q: searchQuery, format: 'json' } });
+
                 setResults(data.result || []);
+                setContext(contextData.data || null);
             } catch (error) {
                 console.error("Error fetching search results:", error);
                 setResults([]);
+                setContext(null);
             } finally {
                 setLoading(false);
             }
@@ -77,7 +112,7 @@ const SearchPage = ({ searchQuery }: { searchQuery: string }) => {
                 const checkFavicon = async () => {
                     try {
                         const response = await axios.get(`https://api.allorigins.win/get?url=${encodeURIComponent(favicon)}`);
-                        if(response.status !== 200){
+                        if(response.status !== 200 || !(response.data.status.content_type as string).startsWith('image/')){
                             favicon = '/default.png';
                         }
                     } catch {
@@ -95,32 +130,50 @@ const SearchPage = ({ searchQuery }: { searchQuery: string }) => {
     return (
         <main className="root-search" style={{ overflow: loading ? 'hidden': 'auto' }}>
             <Header search={searchQuery} />
-            <section className="resultsSection-root">
-                {loading ? (<>
-                    <LoadingResult />
-                    <LoadingResult />
-                    <LoadingResult />
-                    <LoadingResult />
-                </>) : results && results.length > 0 ? (
-                    results.map((result) => {
-                        const favicon = favicons[result.id] || '/default.png';
+            <div style={{ display: 'flex' }}>
+                <section className="resultsSection-root">
+                    {loading ? (<>
+                        <LoadingResult />
+                        <LoadingResult />
+                        <LoadingResult />
+                        <LoadingResult />
+                    </>) : results && results.length > 0 ? (
+                        results.map((result) => {
+                            const favicon = favicons[result.id] || '/default.png';
 
-                        return (
-                            <SearchResult
-                                key={result.id}
-                                id={result.id}
-                                name={result.name}
-                                description={result.description}
-                                url={result.url}
-                                favicon={favicon}
-                                site_name={result.opengraph?.site_name ? result.opengraph.site_name : ''}
-                            />
-                        );
-                    })
-                ) : (
-                    <p>No results.</p>
-                )}
-            </section>
+                            return (
+                                <SearchResult
+                                    key={result.id}
+                                    id={result.id}
+                                    name={result.name}
+                                    description={result.description}
+                                    url={result.url}
+                                    favicon={favicon}
+                                    site_name={result.opengraph?.site_name ? result.opengraph.site_name : ''}
+                                />
+                            );
+                        })
+                    ) : (
+                        <p>No results.</p>
+                    )}
+                </section>
+                <section className="contextSection-root">
+                    {loading ? (<></>)
+                    : context ? (
+                        <SearchContext
+                            AbstractText={context.AbstractText}
+                            AbstractSource={context.AbstractSource}
+                            AbstractURL={context.AbstractURL}
+                            Heading={context.Heading}
+                            ImageContext={context.Image}
+                            Infobox={context.Infobox}
+                            OfficialWebsite={context.OfficialWebsite}
+                            RelatedTopics={context.RelatedTopics}
+                        />
+                    )
+                    : (<></>)}
+                </section>
+            </div>
         </main>
     );
 };
