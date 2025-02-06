@@ -28,7 +28,7 @@ type InfoboxProps = {
     wiki_order: string;
 }
 
-const SearchContext = ({ AbstractText, AbstractSource, AbstractURL, Heading, ImageContext, Infobox, OfficialWebsite, RelatedTopics }: ContextUsedProps) => {
+const SearchContext = ({ AbstractText, AbstractSource, AbstractURL, Heading, ImageContext, Infobox, OfficialWebsite }: ContextUsedProps) => {
     const [headling, setHeadline] = useState<string | null>(null)
 
     useEffect(() => {
@@ -87,7 +87,7 @@ const SearchContext = ({ AbstractText, AbstractSource, AbstractURL, Heading, Ima
                         )}
                         {Infobox.content.map((info: InfoboxProps, index: number) => {
                             if(info.data_type.endsWith('_profile')){
-                                var hrefLink = "https://" + info.data_type.replace('_profile', '') + ".com/" + info.value;
+                                const hrefLink = "https://" + info.data_type.replace('_profile', '') + ".com/" + info.value;
                                 
                                 return (<Link href={hrefLink} target="_blank" rel="noreferrer" title={capitalizeFirstLetter(info.data_type.replace('_profile', ''))} key={index}>
                                     <img
