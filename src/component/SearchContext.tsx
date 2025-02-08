@@ -91,7 +91,11 @@ const SearchContext = ({ AbstractText, AbstractSource, AbstractURL, Heading, Ima
                                 
                                 return (<Link href={hrefLink} target="_blank" rel="noreferrer" title={capitalizeFirstLetter(info.data_type.replace('_profile', ''))} key={index}>
                                     <img
-                                        src={`https://www.google.com/s2/favicons?domain=${info.data_type.replace('_profile', '')}.com&sz=64`}
+                                        src={
+                                            info.data_type.replace('_profile', '') === 'instagram' ?
+                                            `https://www.google.com/s2/favicons?domain=${info.data_type.replace('_profile', '')}.com&sz=64` :
+                                            `https://icon.horse/icon/${info.data_type.replace('_profile', '')}.com`
+                                        }
                                         alt={`${info.data_type.replace('_profile', '')} icon`}
                                     />
                                 </Link>);

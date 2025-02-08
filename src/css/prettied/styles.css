@@ -307,7 +307,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-left: 15px;
-    width: calc(100% - 15px);
+    width: calc(100% - 65px);
 }
 
 .top-resultInfos > #name-url > #name { font-weight: var(--title-font-weight); }
