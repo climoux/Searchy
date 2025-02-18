@@ -5,7 +5,6 @@ This project is made with [Next.js](https://nextjs.org).
 
 - Private browsing experience with no ads or trackers
 - Custom web crawler to enhance search results
-- Self-hosted API for handling search queries
 - Built with Next.js for performance and scalability
 
 ## Installation
@@ -44,10 +43,9 @@ The application will be available at `http://localhost:3000`.
 
 ## API Endpoints
 
-The backend API is located in the `/src/app/api` folder. Here are some key endpoints:
+The backend API is supported by my own at `searchy.wevaw.com` (there's no source code yet). Here are some key endpoints:
 
 - `GET /api/search?q=something` - Fetches search results based on the query.
-- `GET /api/stats` - Returns statistics about the crawler and indexed pages.
 
 ## Contribution
 
