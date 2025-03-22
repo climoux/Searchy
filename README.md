@@ -41,12 +41,6 @@ yarn run dev
 
 The application will be available at `http://localhost:3000`.
 
-## API Endpoints
-
-The backend API is supported by my own at `searchy.wevaw.com` (there's no source code yet). Here are some key endpoints:
-
-- `GET /api/search?q=something` - Fetches search results based on the query.
-
 ## Contribution
 
 Contributions are welcome! Feel free to open issues or submit pull requests.
